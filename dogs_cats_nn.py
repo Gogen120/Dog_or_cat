@@ -105,25 +105,25 @@ def train_nn(model):
 
 
 def predict_label(img):
-    model = nn()
-    if os.path.exists('{}.meta'.format(MODEL_NAME)):
+    if not os.path.exists('{}.meta'.format(MODEL_NAME)):
+        return 'cat or dog (Train neural network first)'
+    else:
+        model = nn()
         model.load(MODEL_NAME)
-        print('model loaded!')
-    else:
-        train_nn(model)
-    processed_img = process_given_img(img)
-    # cat: [1, 0]
-    # dog: [0, 1]
-    img_data = processed_img[0][0]
-    data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
-    model_out = model.predict([data])[0]
-    if np.argmax(model_out) == 1:
-        str_label = 'Dog'
-    else:
-        str_label = 'Cat'
+        processed_img = process_given_img(img)
+        # cat: [1, 0]
+        # dog: [0, 1]
+        img_data = processed_img[0][0]
+        data = img_data.reshape(IMG_SIZE, IMG_SIZE, 1)
+        model_out = model.predict([data])[0]
+        if np.argmax(model_out) == 1:
+            str_label = 'Dog'
+        else:
+            str_label = 'Cat'
 
-    return str_label
+        return str_label
 
 
 if __name__ == '__main__':
-    train_nn()
+    model = nn()
+    train_nn(model)
