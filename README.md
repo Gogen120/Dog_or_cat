@@ -1,26 +1,9 @@
-# Решатель квадратных уравнений
+# Dog or cat
 
-Программа считает корни квадратного уравнения
+Neural network that predict, dog or cat is represented on the given image
 
-# Как использовать
+# Quickstart
 
-```
-from quadratic_equation import get_roots
-get_roots(1, 2, 3) # Считает корни квадратного уравнения. Аргументы - коэффициенты квадратного уравнения
-```
-
-# Как запустить
-
-Скрипт требует для своей работы установленного интерпретатора Python версии 3.5
-
-Запуск на Linux:
-
-```bash
-python tests.py # может понадобиться вызов python3 вместо python, зависит от настроек операционной системы
-```
-
-Запуск на Windows происходит аналогично.
-
-# Цели проекта
-
-Код создан в учебных целях. В рамках учебного курса по веб-разработке ― [DEVMAN.org](https://devman.org)
+1. Install all requirements `pip install -r requirements.txt # alternatively try pip3`
+2. Run the flask app `python app.py`. It will train neural network (it can be a rather long process)
+3. If you want to retrain nn: make changes in train_nn function and run `python dogs_cats_nn.py`.
