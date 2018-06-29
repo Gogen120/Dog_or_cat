@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dog or Cat</title>
+
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1>Dog or Cat</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <form method="post" enctype="multipart/form-data" action="{{ url_for('load_image') }}">
+          <input type="file" name="picture">
+          <button type="submit" name="Upload" class="btn btn-primary">Загрузить</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        {% if img %}
+          <img src="{{ img }}" alt="" class="img-thumbnail">
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col text-center">
+        {% if predicted_label %}
+          <p>My prediction: <b>I think it's a {{ predicted_label }}!<b></p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
